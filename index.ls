@@ -29,10 +29,41 @@ show = ->
   is-show := !is-show
   $ \.fbtn .css \opacity, if is-show => \1.0 else \0.1
 
+get-time-to-end = (range) ->
+  now = new Date!
+  end = null
+  
+  switch range
+  | \today =>
+      end := new Date now.getFullYear!, now.getMonth!, now.getDate!, 23, 59, 59, 999
+  | \week =>
+      # Calculate days until end of week (Sunday at 23:59:59)
+      # If today is Sunday (0), we count until end of current Sunday
+      # Otherwise, count days remaining until next Sunday
+      current-day = now.getDay!
+      days-to-sunday = if current-day == 0 then 0 else 7 - current-day
+      end := new Date now.getFullYear!, now.getMonth!, now.getDate! + days-to-sunday, 23, 59, 59, 999
+  | \month =>
+      # Last day of current month
+      end := new Date now.getFullYear!, now.getMonth! + 1, 0, 23, 59, 59, 999
+  | \year =>
+      # Last day of current year
+      end := new Date now.getFullYear!, 11, 31, 23, 59, 59, 999
+  
+  return Math.floor (end.getTime! - now.getTime!) / 1000
+
 adjust = (it,v) ->
   if is-blink => return
   delay := delay + it * 1000
   if it==0 => delay := v * 1000
+  if delay <= 0 => delay := 0
+  $ \#timer .text delay
+  resize!
+
+adjust-range = (range) ->
+  if is-blink => return
+  seconds = get-time-to-end range
+  delay := seconds * 1000
   if delay <= 0 => delay := 0
   $ \#timer .text delay
   resize!
@@ -64,14 +95,21 @@ reset = ->
   if handler => clearInterval handler
   handler := null
   $ \#timer .text delay
-  $ \#timer .css \color, \#fff
+  $ \#timer .css \color, \#00FF00
+  $ \#progress-bar .css \width, \0%
   resize!
 
 
 blink = ->
   is-blink := true
   is-light := !is-light
-  $ \#timer .css \color, if is-light => \#fff else \#f00
+  $ \#timer .css \color, if is-light => \#00FF00 else \#FF006E
+
+update-progress-bar = ->
+  if !is-run or !start => return
+  diff = start.getTime! - (new Date!)getTime! + delay + latency
+  progress-percentage = if delay > 0 then Math.max(0, Math.min(100, ((delay - diff) / delay) * 100)) else 0
+  $ \#progress-bar .css \width, "#{progress-percentage}%"
 
 count = ->
   tm = $ \#timer
@@ -88,6 +126,7 @@ count = ->
     clearInterval handler
     handler := setInterval ( -> blink!), 500
   tm.text "#{diff}"
+  update-progress-bar!
   resize!
 
 run =  ->

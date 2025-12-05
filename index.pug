@@ -8,7 +8,10 @@ html
     script(type="text/javascript",src="bootstrap3.min.js")
     script(type="text/javascript",src="index.js")
   body
-    #timer ????
+    #timer-container
+      #timer ????
+      #progress-bar-container
+        #progress-bar
     a#min60.btn.btn-info.fbtn(onclick="adjust(-60)") -60
     a#min10.btn.btn-info.fbtn(onclick="adjust(-10)") -10
     a#toggle.btn.btn-primary(onclick="toggle()") RUN
@@ -24,3 +27,7 @@ html
     a#def600.btn.btn-success.fbtn(onclick="adjust(0,600)") 10 min
     a#def900.btn.btn-success.fbtn(onclick="adjust(0,900)") 15 min
     a#def1800.btn.btn-success.fbtn(onclick="adjust(0,1800)") 30 min
+    a#range-today.btn.btn-primary.fbtn(onclick="adjustRange('today')") 本日
+    a#range-week.btn.btn-primary.fbtn(onclick="adjustRange('week')") 本週
+    a#range-month.btn.btn-primary.fbtn(onclick="adjustRange('month')") 本月
+    a#range-year.btn.btn-primary.fbtn(onclick="adjustRange('year')") 今年
