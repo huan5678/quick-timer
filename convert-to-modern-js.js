@@ -46,4 +46,4 @@ content = content.replace(/(\s+)var\s+([a-zA-Z$_][a-zA-Z0-9$_]*(?:\s*,\s*[a-zA-Z
 });
 
 fs.writeFileSync(filePath, content, 'utf8');
-console.log('Converted var to const/let in index.js');
+console.log('Converted var to let in index.js');
