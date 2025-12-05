@@ -37,7 +37,9 @@ get-time-to-end = (range) ->
   | \today =>
       end := new Date now.getFullYear!, now.getMonth!, now.getDate!, 23, 59, 59, 999
   | \week =>
-      # Calculate days until end of week (Sunday)
+      # Calculate days until end of week (Sunday at 23:59:59)
+      # If today is Sunday (0), we count until end of current Sunday
+      # Otherwise, count days remaining until next Sunday
       current-day = now.getDay!
       days-to-sunday = if current-day == 0 then 0 else 7 - current-day
       end := new Date now.getFullYear!, now.getMonth!, now.getDate! + days-to-sunday, 23, 59, 59, 999
