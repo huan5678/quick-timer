@@ -12,22 +12,24 @@ html
       #timer ????
       #progress-bar-container
         #progress-bar
-    a#min60.btn.btn-info.fbtn(onclick="adjust(-60)") -60
-    a#min10.btn.btn-info.fbtn(onclick="adjust(-10)") -10
-    a#toggle.btn.btn-primary(onclick="toggle()") RUN
-    a#reset.btn.btn-warning(onclick="reset()") RESET
-    a#hide.btn.btn-default(onclick="show()") &#xd60;
-    a#add10.btn.btn-info.fbtn(onclick="adjust(10)") +10
-    a#add60.btn.btn-info.fbtn(onclick="adjust(60)") +60
-    a#def10.btn.btn-success.fbtn(onclick="adjust(0,10)") 10 sec
-    a#def30.btn.btn-success.fbtn(onclick="adjust(0,30)") 30 sec
-    a#def60.btn.btn-success.fbtn(onclick="adjust(0,60)") 1 min
-    a#def180.btn.btn-success.fbtn(onclick="adjust(0,180)") 3 min
-    a#def300.btn.btn-success.fbtn(onclick="adjust(0,300)") 5 min
-    a#def600.btn.btn-success.fbtn(onclick="adjust(0,600)") 10 min
-    a#def900.btn.btn-success.fbtn(onclick="adjust(0,900)") 15 min
-    a#def1800.btn.btn-success.fbtn(onclick="adjust(0,1800)") 30 min
-    a#range-today.btn.btn-primary.fbtn(onclick="adjustRange('today')") 本日
-    a#range-week.btn.btn-primary.fbtn(onclick="adjustRange('week')") 本週
-    a#range-month.btn.btn-primary.fbtn(onclick="adjustRange('month')") 本月
-    a#range-year.btn.btn-primary.fbtn(onclick="adjustRange('year')") 今年
+    #controls-top
+      a#min60.btn.btn-info.fbtn(onclick="adjust(-60)") -60
+      a#min10.btn.btn-info.fbtn(onclick="adjust(-10)") -10
+      a#toggle.btn.btn-primary(onclick="toggle()") RUN
+      a#reset.btn.btn-warning(onclick="reset()") RESET
+      a#hide.btn.btn-default(onclick="show()") &#xd60;
+      a#add10.btn.btn-info.fbtn(onclick="adjust(10)") +10
+      a#add60.btn.btn-info.fbtn(onclick="adjust(60)") +60
+    #controls-bottom
+      a#range-today.btn.btn-primary.fbtn(onclick="adjustRange('today')") 本日
+      a#range-week.btn.btn-primary.fbtn(onclick="adjustRange('week')") 本週
+      a#range-month.btn.btn-primary.fbtn(onclick="adjustRange('month')") 本月
+      a#range-year.btn.btn-primary.fbtn(onclick="adjustRange('year')") 今年
+      a#def10.btn.btn-success.fbtn(onclick="adjust(0,10)") 10 sec
+      a#def30.btn.btn-success.fbtn(onclick="adjust(0,30)") 30 sec
+      a#def60.btn.btn-success.fbtn(onclick="adjust(0,60)") 1 min
+      a#def180.btn.btn-success.fbtn(onclick="adjust(0,180)") 3 min
+      a#def300.btn.btn-success.fbtn(onclick="adjust(0,300)") 5 min
+      a#def600.btn.btn-success.fbtn(onclick="adjust(0,600)") 10 min
+      a#def900.btn.btn-success.fbtn(onclick="adjust(0,900)") 15 min
+      a#def1800.btn.btn-success.fbtn(onclick="adjust(0,1800)") 30 min

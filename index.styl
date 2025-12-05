@@ -91,61 +91,59 @@ html, body
   background: #FFF !important
   color: #000 !important
 
-#hide, #toggle, #reset, #min10, #min60, #add10, #add60, #def10, #def30, #def60, #def180, #def300, #def600, #def900, #def1800
+#controls-top
   position: absolute
   top: 5px
-  left: 50%
-  margin-left: -210px
-  width: 170px
+  left: 0
+  right: 0
+  display: flex
+  justify-content: center
+  align-items: center
+  gap: 10px
+  flex-wrap: wrap
+  margin: 0 auto
+  padding: 0 10px
+
+#controls-bottom
+  position: absolute
+  bottom: 5px
+  left: 0
+  right: 0
+  display: flex
+  justify-content: center
+  align-items: center
+  gap: 10px
+  flex-wrap: wrap
+  margin: 0 auto
+  padding: 0 10px
+
+#hide, #toggle, #reset, #min10, #min60, #add10, #add60
+  width: auto
   height: 44px
   line-height: 30px
-#reset
-  margin-left: 50px
+  position: relative
+  top: auto
+  left: auto
+  margin-left: 0
+
+#toggle, #reset
+  width: 170px
+
 #hide
-  margin-left: -30px
   width: 70px
 
 #min10, #min60, #add10, #add60
   width: 50px
 
 #def10, #def30, #def60, #def180, #def300, #def600, #def900, #def1800, #range-today, #range-week, #range-month, #range-year
-  bottom: 5px
-  top: auto
   width: 70px
-#min10
-  margin-left: -270px
-#min60
-  margin-left: -330px
-#add10
-  margin-left: 230px
-#add60
-  margin-left: 290px
-
-#def10
-  margin-left: -285px
-#def30
-  margin-left: -205px
-#def60
-  margin-left: -125px
-#def180
-  margin-left: -45px
-#def300
-  margin-left: 35px
-#def600
-  margin-left: 115px
-#def900
-  margin-left: 195px
-#def1800
-  margin-left: 275px
-
-#range-today
-  margin-left: 355px
-#range-week
-  margin-left: 435px
-#range-month
-  margin-left: 515px
-#range-year
-  margin-left: 595px
+  height: 44px
+  line-height: 30px
+  position: relative
+  top: auto
+  left: auto
+  bottom: auto
+  margin-left: 0
 
 #audio
   position: absolute
