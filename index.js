@@ -131,11 +131,10 @@ blink = function(){
   return $('#timer').css('color', isLight ? '#00FF00' : '#FF006E');
 };
 updateProgressBar = function(){
-  var tm, diff, progressPercentage;
+  var diff, progressPercentage;
   if (!isRun || !start) {
     return;
   }
-  tm = $('#timer');
   diff = start.getTime() - new Date().getTime() + delay + latency;
   progressPercentage = delay > 0 ? Math.max(0, Math.min(100, ((delay - diff) / delay) * 100)) : 0;
   return $('#progress-bar').css('width', progressPercentage + "%");
