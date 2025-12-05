@@ -95,14 +95,22 @@ reset = ->
   if handler => clearInterval handler
   handler := null
   $ \#timer .text delay
-  $ \#timer .css \color, \#fff
+  $ \#timer .css \color, \#00FF00
+  $ \#progress-bar .css \width, \0%
   resize!
 
 
 blink = ->
   is-blink := true
   is-light := !is-light
-  $ \#timer .css \color, if is-light => \#fff else \#f00
+  $ \#timer .css \color, if is-light => \#00FF00 else \#FF006E
+
+update-progress-bar = ->
+  if !is-run or !start => return
+  tm = $ \#timer
+  diff = start.getTime! - (new Date!)getTime! + delay + latency
+  progress-percentage = if delay > 0 then Math.max(0, Math.min(100, ((delay - diff) / delay) * 100)) else 0
+  $ \#progress-bar .css \width, "#{progress-percentage}%"
 
 count = ->
   tm = $ \#timer
@@ -119,6 +127,7 @@ count = ->
     clearInterval handler
     handler := setInterval ( -> blink!), 500
   tm.text "#{diff}"
+  update-progress-bar!
   resize!
 
 run =  ->
