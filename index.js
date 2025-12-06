@@ -84,7 +84,10 @@ adjustRange = function(range){
     delay = 0;
   }
   $('#timer').text(delay);
-  return resize();
+  resize();
+  if (!isRun) {
+    return toggle();
+  }
 };
 toggle = function(){
   isRun = !isRun;

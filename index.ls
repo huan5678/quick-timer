@@ -67,6 +67,8 @@ adjust-range = (range) ->
   if delay <= 0 => delay := 0
   $ \#timer .text delay
   resize!
+  # Auto-start the countdown after setting the time
+  if !is-run => toggle!
 
 toggle = ->
   is-run := !is-run
